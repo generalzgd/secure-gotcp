@@ -1,4 +1,4 @@
-package gotcp
+package securegotcp
 
 import (
 	"net"

@@ -8,7 +8,7 @@
  * @file: conn_test.go
  * @time: 2018/9/7 10:57
  */
-package gotcp
+package securegotcp
 
 import "testing"
 
