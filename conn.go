@@ -5,12 +5,11 @@ import (
 	"fmt"
 	"net"
 	"os"
+	"path/filepath"
+	"runtime/debug"
 	"sync"
 	"sync/atomic"
 	"time"
-	"path/filepath"
-	"runtime/debug"
-	"svr-frame/libs/tool"
 )
 
 // Error type
@@ -23,7 +22,7 @@ var (
 // Conn exposes a set of callbacks for the various events that occur on a connection
 type Conn struct {
 	srv               *Server
-	conn              net.Conn  // the raw connection
+	conn              net.Conn      // the raw connection
 	extraData         interface{}   // to save extra data
 	closeOnce         sync.Once     // close the conn, once, per instance
 	closeFlag         int32         // close flag
@@ -241,12 +240,11 @@ func asyncDo(fn func(), wg *sync.WaitGroup) {
 	}()
 }
 
-
-
 var logDir = "./"
+
 /*
 * 只能设置执行文件所在目录下的一级文件夹
-*/
+ */
 func SetLogDir(dir string) {
 	logDir = filepath.Join(filepath.Dir(os.Args[0]), dir)
 
@@ -261,6 +259,6 @@ func init() {
 }
 
 func writeLog(line string) {
-	path := filepath.Join(logDir, "err.txt")
-	tool.WriteLog(path, line)
+	//path := filepath.Join(logDir, "err.txt")
+	//tool.WriteLog(path, line)
 }
